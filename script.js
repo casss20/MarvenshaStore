@@ -383,7 +383,7 @@ function renderShowcase() {
 }
 
 /* ---------- Catalog photos ---------- */
-function renderCatalog() {
+function renderStaticCatalog() {
   const grid = document.getElementById("catalog-grid");
   if (!grid) return;
   grid.innerHTML = CATALOG.map(p => {
@@ -407,6 +407,107 @@ function renderCatalog() {
   }).join("");
 }
 
+
+/* Published Supabase products; static photography is a labeled fallback only. */
+let liveCatalog = null;
+let catalogLoading = false;
+let catalogError = false;
+let catalogPage = 0;
+let catalogHasMore = false;
+const CATALOG_PAGE_SIZE = 24;
+const catalogLabels = {
+  fr: { loading:"Chargement des bijoux…", empty:"Aucun bijou publié pour le moment.", fallback:"Aperçu de la collection — contactez-nous pour confirmer les disponibilités.", more:"Voir plus", unavailable:"Catalogue indisponible — aperçu des modèles." },
+  ht: { loading:"N ap chaje bijou yo…", empty:"Pa gen bijou ki pibliye kounye a.", fallback:"Apèsi koleksyon an — kontakte nou pou konfime disponiblite.", more:"Gade plis", unavailable:"Katalòg la pa disponib — men kèk modèl." },
+  en: { loading:"Loading jewelry…", empty:"No published jewelry is available yet.", fallback:"Collection preview — contact us to confirm availability.", more:"Load more", unavailable:"Catalog unavailable — showing a collection preview." }
+};
+function catalogText(key) { return (catalogLabels[LANG] || catalogLabels.fr)[key]; }
+function safeCatalogImage(value) {
+  if (typeof value !== "string") return "";
+  try {
+    const url = new URL(value, location.href);
+    if (!["https:", "http:"].includes(url.protocol)) return "";
+    if (url.protocol === "http:" && url.origin !== location.origin) return "";
+    return url.href;
+  } catch (_) { return ""; }
+}
+function catalogPrice(p) {
+  if (typeof p.price_display === "string" && p.price_display.trim()) return p.price_display.trim().slice(0,100);
+  const amount = p.sale_price ?? p.price;
+  if (typeof amount !== "number" || !Number.isFinite(amount) || amount < 0) return t("price");
+  const currency = /^[A-Z]{3}$/.test(p.currency || "") ? p.currency : "HTG";
+  try { return new Intl.NumberFormat(LANG === "ht" ? "fr-HT" : LANG, {style:"currency",currency}).format(amount); }
+  catch (_) { return `${amount} ${currency}`; }
+}
+function renderCatalog() {
+  const grid = document.getElementById("catalog-grid");
+  if (!grid) return;
+  let status = document.getElementById("catalog-status");
+  if (!status) {
+    status = document.createElement("p");
+    status.id = "catalog-status";
+    status.className = "catalog-status";
+    status.setAttribute("role", "status");
+    grid.before(status);
+  }
+  let more = document.getElementById("catalog-more");
+  if (!more) {
+    more = document.createElement("button");
+    more.id = "catalog-more";
+    more.type = "button";
+    more.className = "btn btn-gold catalog-more";
+    grid.after(more);
+    more.addEventListener("click", () => loadCatalog(true));
+  }
+  more.hidden = !catalogHasMore || catalogLoading;
+  more.textContent = catalogText("more");
+  if (catalogLoading && liveCatalog === null) { status.textContent = catalogText("loading"); grid.replaceChildren(); return; }
+  if (liveCatalog === null) {
+    status.textContent = catalogText(catalogError ? "unavailable" : "fallback");
+    renderStaticCatalog();
+    return;
+  }
+  status.textContent = liveCatalog.length ? "" : catalogText("empty");
+  grid.replaceChildren();
+  for (const p of liveCatalog) {
+    const li = document.createElement("li"); li.className = "cat-card";
+    const figure = document.createElement("figure"); figure.className = "cat-media";
+    const imgUrl = safeCatalogImage(p.image_url);
+    if (imgUrl) {
+      const img = document.createElement("img");
+      img.src = imgUrl; img.alt = String(p.name || "MARVENSHA").slice(0,180);
+      img.loading = "lazy"; img.decoding = "async"; figure.append(img);
+    }
+    li.append(figure);
+    const body = document.createElement("div"); body.className = "cat-body";
+    const h = document.createElement("h3"); h.textContent = String(p.name || "MARVENSHA").slice(0,200);
+    const desc = document.createElement("p"); desc.textContent = String(p.description || "").slice(0,1000);
+    const price = document.createElement("p"); price.className = "sc-price"; price.textContent = catalogPrice(p);
+    const link = document.createElement("a"); link.className = "btn btn-wa";
+    link.href = waUrl(productMsg(h.textContent)); link.target = "_blank"; link.rel = "noopener noreferrer";
+    link.textContent = `${t("card_wa")} ${WHATSAPP_DISPLAY}`;
+    body.append(h,desc,price,link); li.append(body); grid.append(li);
+  }
+}
+async function loadCatalog(nextPage = false) {
+  if (catalogLoading) return;
+  catalogLoading = true;
+  if (!nextPage) { catalogPage = 0; liveCatalog = null; catalogHasMore = false; }
+  renderCatalog();
+  try {
+    const response = await fetch(`/api/products?page=${catalogPage}&limit=${CATALOG_PAGE_SIZE}`, {headers:{Accept:"application/json"}});
+    if (!response.ok) throw new Error(`Catalog HTTP ${response.status}`);
+    const data = await response.json();
+    if (!data || !Array.isArray(data.products)) throw new Error("Invalid catalog");
+    liveCatalog = nextPage ? [...(liveCatalog || []), ...data.products] : data.products;
+    catalogHasMore = Boolean(data.has_more);
+    catalogPage++;
+    catalogError = false;
+  } catch (error) {
+    console.warn("Catalog could not load:", error.message);
+    catalogError = true;
+    if (!nextPage) liveCatalog = null;
+  } finally { catalogLoading = false; renderCatalog(); }
+}
 /* ---------- Product videos ---------- */
 function renderVideos() {
   const grid = document.getElementById("video-grid");
@@ -599,6 +700,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let lang = params.get("lang");
   if (!lang) { try { lang = localStorage.getItem("mv_lang"); } catch (e) {} }
   setupHeroClip();
+  loadCatalog();
   applyLang(lang || DEFAULT_LANG);
   mountMotionSlots();
   document.querySelectorAll(".lang-switch [data-lang]").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));

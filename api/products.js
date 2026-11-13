@@ -56,7 +56,7 @@ function mapProduct(row) {
   };
 }
 
-function productsUrl(raw) {
+function productsUrl(raw, page, limit) {
   var parsed;
   try {
     parsed = new URL(raw);
@@ -67,7 +67,8 @@ function productsUrl(raw) {
   var url = new URL("/rest/v1/products", parsed.origin);
   url.search = "select=" + encodeURIComponent(COLUMNS) +
     "&visibility=eq.published" +
-    "&order=" + encodeURIComponent("sort_order.asc.nullslast,id.asc");
+    "&order=" + encodeURIComponent("sort_order.asc.nullslast,id.asc") +
+    "&limit=" + (limit + 1) + "&offset=" + (page * limit);
   return url;
 }
 
@@ -94,9 +95,20 @@ export default {
       });
     }
 
+    const requestUrl = new URL(request.url);
+    const pageRaw = requestUrl.searchParams.get("page") || "0";
+    const limitRaw = requestUrl.searchParams.get("limit") || "24";
+    if (!/^(0|[1-9]\d{0,4})$/.test(pageRaw) || !/^(0|[1-9]\d{0,2})$/.test(limitRaw)) {
+      return json({ error: "invalid_pagination" }, 400, CACHE_MISS);
+    }
+    const page = Number(pageRaw);
+    const limit = Number(limitRaw);
+    if (limit < 1 || limit > 48 || page * limit > 10000) {
+      return json({ error: "invalid_pagination" }, 400, CACHE_MISS);
+    }
     var supabaseUrl = process.env.SUPABASE_URL;
     var apiKey = process.env.SUPABASE_PUBLISHABLE_KEY;
-    var endpoint = supabaseUrl ? productsUrl(supabaseUrl) : null;
+    var endpoint = supabaseUrl ? productsUrl(supabaseUrl, page, limit) : null;
     if (!endpoint || !apiKey) return empty(503);
 
     var upstream;
@@ -124,7 +136,8 @@ export default {
     }
     if (!Array.isArray(rows)) return empty(502);
 
-    var products = rows.map(mapProduct);
+    var hasMore = rows.length > limit;
+    var products = rows.slice(0, limit).map(mapProduct);
     var body = {
       source: "supabase",
       sample_data: products.length > 0 && rows.every(function (row) {
@@ -133,6 +146,9 @@ export default {
       catalog_id: null,
       generated_at: new Date().toISOString(),
       count: products.length,
+      page: page,
+      limit: limit,
+      has_more: hasMore,
       products: products
     };
 

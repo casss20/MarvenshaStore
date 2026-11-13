@@ -450,3 +450,9 @@ html,body{overflow-x:clip}
 .brand-mark{width:auto;height:34px;display:block}
 .cta-mark{display:block;width:auto;height:73px}
 @media (max-width:560px){.brand-mark{height:28px}}
+
+/* Dynamic catalog accessibility */
+.catalog-status { margin: 0 0 1rem; }
+.catalog-more { display: block; margin: 2rem auto 0; }
+.catalog-more[hidden] { display: none; }
+.cat-media img { width: 100%; height: 100%; object-fit: cover; }
