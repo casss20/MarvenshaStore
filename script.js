@@ -126,7 +126,8 @@ const I18N = {
     hero_clip_label: "animation d'arrière-plan",
     skip: "Aller au contenu", draft: "Aperçu brouillon — les éléments provisoires sont marqués",
     ph: "À compléter", ph_link: "Lien à venir", ph_name: "Nom à confirmer",
-    nav_collection: "Collection", nav_catalog: "Catalogue", nav_story: "Notre histoire", nav_videos: "Vidéos", nav_engraving: "Gravure", nav_locations: "Où nous trouver",
+    menu_open: "Menu", menu_close: "Fermer",
+    nav_home: "Accueil", nav_collection: "Collection", nav_catalog: "Catalogue", nav_story: "Notre histoire", nav_videos: "Vidéos", nav_engraving: "Gravure", nav_locations: "Où nous trouver",
     col_page_title: "La collection — {brand}", col_page_h1: "La collection", col_page_link: "Voir toute la collection",
     story_title_doc: "Notre histoire — {brand}",
     story_eyebrow: "Notre histoire", story_title: "La joie, <em>gravée.</em>",
@@ -185,7 +186,8 @@ const I18N = {
     hero_clip_label: "animasyon dèyè a",
     skip: "Ale nan kontni an", draft: "Bouyon — sa ki poko fini make konsa",
     ph: "Pou konplete", ph_link: "Lyen ap vini", ph_name: "Non pou konfime",
-    nav_collection: "Koleksyon", nav_catalog: "Katalog", nav_story: "Istwa nou", nav_videos: "Videyo", nav_engraving: "Gravi", nav_locations: "Kote nou ye",
+    menu_open: "Meni", menu_close: "Fèmen",
+    nav_home: "Akèy", nav_collection: "Koleksyon", nav_catalog: "Katalog", nav_story: "Istwa nou", nav_videos: "Videyo", nav_engraving: "Gravi", nav_locations: "Kote nou ye",
     col_page_title: "Koleksyon an — {brand}", col_page_h1: "Koleksyon an", col_page_link: "Gade tout koleksyon an",
     story_title_doc: "Istwa nou — {brand}",
     story_eyebrow: "Istwa nou", story_title: "Lajwa, <em>grave.</em>",
@@ -243,7 +245,8 @@ const I18N = {
     hero_clip_label: "background animation",
     skip: "Skip to content", draft: "Draft preview — placeholders are marked",
     ph: "Placeholder", ph_link: "Link coming", ph_name: "Name to confirm",
-    nav_collection: "Collection", nav_catalog: "Catalog", nav_story: "Our story", nav_videos: "Videos", nav_engraving: "Engraving", nav_locations: "Find us",
+    menu_open: "Menu", menu_close: "Close",
+    nav_home: "Home", nav_collection: "Collection", nav_catalog: "Catalog", nav_story: "Our story", nav_videos: "Videos", nav_engraving: "Engraving", nav_locations: "Find us",
     col_page_title: "The collection — {brand}", col_page_h1: "The collection", col_page_link: "See the whole collection",
     story_title_doc: "Our story — {brand}",
     story_eyebrow: "Our story", story_title: "Joy, <em>engraved.</em>",
@@ -557,6 +560,26 @@ function updateHeroToggle() {
   btn.setAttribute("aria-label", (paused ? t("hero_play") : t("hero_pause")) + " — " + t("hero_clip_label"));
 }
 
+/* ---------- Left pill menu ---------- */
+function setupMenu() {
+  const openBtn = document.querySelector(".menu-open");
+  const menu = document.getElementById("site-menu");
+  if (!openBtn || !menu) return;
+  const closeBtn = menu.querySelector(".menu-close");
+  const setOpen = (open) => {
+    menu.hidden = !open;
+    openBtn.setAttribute("aria-expanded", String(open));
+    document.body.classList.toggle("menu-is-open", open);
+    if (open) closeBtn.focus();
+  };
+  openBtn.addEventListener("click", () => setOpen(menu.hidden));
+  closeBtn.addEventListener("click", () => { setOpen(false); openBtn.focus(); });
+  menu.addEventListener("click", (e) => { if (e.target === menu) setOpen(false); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !menu.hidden) { setOpen(false); openBtn.focus(); }
+  });
+}
+
 /* ---------- Floating WhatsApp: hide while a main CTA is visible ---------- */
 function setupFloat() {
   const float = document.getElementById("wa-float");
@@ -579,6 +602,7 @@ document.addEventListener("DOMContentLoaded", () => {
   applyLang(lang || DEFAULT_LANG);
   mountMotionSlots();
   document.querySelectorAll(".lang-switch [data-lang]").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));
+  setupMenu();
 
   if (INSTAGRAM_URL) {
     document.querySelectorAll(".instagram-link").forEach(a => {
