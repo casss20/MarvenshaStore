@@ -462,7 +462,7 @@ function renderCatalog() {
   more.textContent = catalogText("more");
   if (catalogLoading && liveCatalog === null) { status.textContent = catalogText("loading"); grid.replaceChildren(); return; }
   if (liveCatalog === null) {
-    status.textContent = catalogText(catalogError ? "unavailable" : "fallback");
+    status.textContent = catalogError ? catalogText("unavailable") : "";
     renderStaticCatalog();
     return;
   }
@@ -498,6 +498,13 @@ async function loadCatalog(nextPage = false) {
     if (!response.ok) throw new Error(`Catalog HTTP ${response.status}`);
     const data = await response.json();
     if (!data || !Array.isArray(data.products)) throw new Error("Invalid catalog");
+    const sampleOnly = Boolean(data.sample_data) || (data.products.length > 0 && data.products.every((p) => /^SAMPLE\b/i.test(String((p && (p.id || p.name)) || ""))));
+    if (sampleOnly && !nextPage) {
+      liveCatalog = null;
+      catalogHasMore = false;
+      catalogError = false;
+      return;
+    }
     liveCatalog = nextPage ? [...(liveCatalog || []), ...data.products] : data.products;
     catalogHasMore = Boolean(data.has_more);
     catalogPage++;
