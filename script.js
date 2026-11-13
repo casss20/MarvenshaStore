@@ -126,7 +126,15 @@ const I18N = {
     hero_clip_label: "animation d'arrière-plan",
     skip: "Aller au contenu", draft: "Aperçu brouillon — les éléments provisoires sont marqués",
     ph: "À compléter", ph_link: "Lien à venir", ph_name: "Nom à confirmer",
-    nav_collection: "Collection", nav_catalog: "Catalogue", nav_videos: "Vidéos", nav_engraving: "Gravure", nav_locations: "Où nous trouver",
+    nav_collection: "Collection", nav_catalog: "Catalogue", nav_story: "Notre histoire", nav_videos: "Vidéos", nav_engraving: "Gravure", nav_locations: "Où nous trouver",
+    col_page_title: "La collection — {brand}", col_page_h1: "La collection", col_page_link: "Voir toute la collection",
+    story_title_doc: "Notre histoire — {brand}",
+    story_eyebrow: "Notre histoire", story_title: "La joie, <em>gravée.</em>",
+    story_name: "Evens Julot", story_role: "Fondateur",
+    story_p1: "Evens Julot a fondé MARVENSHA avec une idée simple : un bijou gravé peut mettre de la joie dans le cœur de quelqu'un.",
+    story_p2: "Un prénom, une date, une phrase. Gravés au laser sur un collier, un bracelet ou une plaque, ces mots deviennent un cadeau que l'on garde près de soi. C'est cela que la boutique veut offrir, à Okap et à Limbé.",
+    story_p3: "Chaque pièce part dans un écrin bleu marine, prête à être donnée. Envoyez-nous les mots à graver : nous les préparons avec soin, puis nous vous répondons sur WhatsApp.",
+    story_alt: "Evens Julot, fondateur de MARVENSHA",
     hero_eyebrow: "Plaqué or · gravure laser",
     hero_title: "Votre nom,<br><em>gravé pour briller.</em>",
     hero_lede: "Colliers, pendentifs et bracelets plaqué or, gravés au laser à votre nom et prêts à offrir.",
@@ -177,7 +185,15 @@ const I18N = {
     hero_clip_label: "animasyon dèyè a",
     skip: "Ale nan kontni an", draft: "Bouyon — sa ki poko fini make konsa",
     ph: "Pou konplete", ph_link: "Lyen ap vini", ph_name: "Non pou konfime",
-    nav_collection: "Koleksyon", nav_catalog: "Katalog", nav_videos: "Videyo", nav_engraving: "Gravi", nav_locations: "Kote nou ye",
+    nav_collection: "Koleksyon", nav_catalog: "Katalog", nav_story: "Istwa nou", nav_videos: "Videyo", nav_engraving: "Gravi", nav_locations: "Kote nou ye",
+    col_page_title: "Koleksyon an — {brand}", col_page_h1: "Koleksyon an", col_page_link: "Gade tout koleksyon an",
+    story_title_doc: "Istwa nou — {brand}",
+    story_eyebrow: "Istwa nou", story_title: "Lajwa, <em>grave.</em>",
+    story_name: "Evens Julot", story_role: "Fondatè",
+    story_p1: "Evens Julot te fonde MARVENSHA ak yon ide senp : yon bijou ki grave ka mete lajwa nan kè yon moun.",
+    story_p2: "Yon non, yon dat, yon fraz. Grave ak lazè sou yon kolye, yon braslè oswa yon plak, mo sa yo vin yon kado ou kenbe toupre ou. Se sa boutik la vle bay, nan Okap ak nan Limbé.",
+    story_p3: "Chak bijou ale nan yon bwat ble maren, pare pou bay. Voye nou mo pou nou grave yo : nou prepare yo ak swen, epi nou reponn ou sou WhatsApp.",
+    story_alt: "Evens Julot, fondatè MARVENSHA",
     hero_eyebrow: "Plake lò · gravi lazè",
     hero_title: "Non w,<br><em>grave pou l klere.</em>",
     hero_lede: "Kolye, pandantif ak braslè plake lò, grave ak lazè ak non w, pare pou bay kado.",
@@ -227,7 +243,15 @@ const I18N = {
     hero_clip_label: "background animation",
     skip: "Skip to content", draft: "Draft preview — placeholders are marked",
     ph: "Placeholder", ph_link: "Link coming", ph_name: "Name to confirm",
-    nav_collection: "Collection", nav_catalog: "Catalog", nav_videos: "Videos", nav_engraving: "Engraving", nav_locations: "Find us",
+    nav_collection: "Collection", nav_catalog: "Catalog", nav_story: "Our story", nav_videos: "Videos", nav_engraving: "Engraving", nav_locations: "Find us",
+    col_page_title: "The collection — {brand}", col_page_h1: "The collection", col_page_link: "See the whole collection",
+    story_title_doc: "Our story — {brand}",
+    story_eyebrow: "Our story", story_title: "Joy, <em>engraved.</em>",
+    story_name: "Evens Julot", story_role: "Founder",
+    story_p1: "Evens Julot founded MARVENSHA with a simple idea: an engraved piece of jewelry can put joy in someone's heart.",
+    story_p2: "A name, a date, a sentence. Laser-engraved on a necklace, a bracelet, or a plate, those words become a gift you keep close. That is what the shop sets out to give, in Okap and Limbé.",
+    story_p3: "Each piece leaves in a navy box, ready to be given. Send us the words to engrave. We prepare them with care, then reply on WhatsApp.",
+    story_alt: "Evens Julot, founder of MARVENSHA",
     hero_eyebrow: "Gold-tone · laser engraving",
     hero_title: "Your name,<br><em>engraved to shine.</em>",
     hero_lede: "Gold-tone necklaces, pendants and bracelets, laser-engraved with your name and ready to gift.",
@@ -290,7 +314,7 @@ function applyLang(lang) {
   document.querySelectorAll("[data-i18n-aria]").forEach(el => el.setAttribute("aria-label", t(el.dataset.i18nAria)));
   document.querySelectorAll("[data-i18n-alt]").forEach(el => el.setAttribute("alt", t(el.dataset.i18nAlt)));
   document.querySelectorAll("[data-brand]").forEach(el => { el.textContent = BRAND_NAME; });
-  document.title = fill(t("title"), { brand: BRAND_NAME });
+  document.title = fill(t(document.body.dataset.titleKey || "title"), { brand: BRAND_NAME });
   document.querySelectorAll(".lang-switch [data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === LANG)));
   const general = waUrl(fill(t("wa_msg_general"), { brand: BRAND_NAME }));
   document.querySelectorAll(".wa-link").forEach(a => { a.href = general; });
@@ -506,6 +530,7 @@ let heroVideo = null;
 function setupHeroClip() {
   if (!SHOW_HERO_CLIP) return;
   const hero = document.querySelector(".hero"), bg = document.getElementById("hero-bg");
+  if (!hero || !bg) return;
   hero.classList.add("has-clip");
   if (REDUCE) { // reduced motion: poster only
     bg.innerHTML = `<img src="${HERO_CLIP.poster}" alt="" width="${HERO_CLIP.w}" height="${HERO_CLIP.h}" decoding="async">`;

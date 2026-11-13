@@ -72,6 +72,21 @@ a{color:inherit}
 .section{padding:clamp(4.5rem,10vw,8rem) 0;position:relative}
 .section-head{max-width:640px;margin-bottom:3rem}
 .section-sub{color:var(--ink-soft);font-size:1.02rem}
+.section-more{margin:1.25rem 0 0}
+.section-more a{color:var(--navy-800);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--gold)}
+.section-more a:hover{color:var(--gold-ink)}
+.page-hero{background:radial-gradient(80% 80% at 0% 0%,rgba(31,58,138,.55),transparent 55%),var(--navy-900);color:var(--cream);padding:clamp(3.2rem,8vw,5.5rem) 0}
+.page-hero h1{font-size:clamp(2.6rem,7vw,4.4rem);color:var(--cream);margin:0}
+.page-hero h1 em{color:var(--gold-soft)}
+.page-hero .section-sub{color:#CFD6E6;max-width:38rem}
+.story{background:var(--cream)}
+.story-grid{display:grid;gap:2rem;align-items:center}
+.story-photo{margin:0}
+.story-photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 12%;border-radius:20px;box-shadow:0 30px 60px -35px rgba(11,42,91,.55)}
+.story-kicker{margin:0 0 .2rem;font-family:var(--serif);font-size:2rem;color:var(--navy-800)}
+.story-role{margin:0 0 1.2rem;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:500}
+.story-copy p{color:var(--ink-soft);font-size:1.08rem}
+@media (min-width:900px){.story-grid{grid-template-columns:.8fr 1.2fr;gap:4.5rem;align-items:center}}
 .section-head-light h2{color:var(--cream)} .section-head-light .section-sub{color:#CFD6E6}
 .section + .section::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(560px,70%);height:1px;background:var(--hair);opacity:.6}
 
@@ -315,7 +330,8 @@ html,body{overflow-x:clip}
 .cat-body h3{margin:0;font-size:1.55rem;color:var(--navy-800)}
 .cat-body p{margin:0;color:var(--ink-soft)}
 .cat-body .btn-wa{margin-top:.4rem}
-@media (min-width:980px){.nav-list{gap:1.25rem}.nav-list a{letter-spacing:.12em}}
+@media (min-width:980px){.nav-list{gap:.85rem}.nav-list a{letter-spacing:.08em;font-size:.74rem}}
+@media (min-width:1180px){.nav-list{gap:1.35rem}.nav-list a{letter-spacing:.12em;font-size:.82rem}}
 /* Video play/pause icon swap */
 .video-play .i-pause{display:none}
 .video-card.is-playing .video-play .i-play{display:none}
