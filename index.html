@@ -7,7 +7,7 @@
   Kreyòl strings = best attempt, NEEDS NATIVE-SPEAKER REVIEW.
   Media: everything served lives in site/media/ (stills from /workspace/Marvensha/tiktok/stills/, clips transcoded
   from /workspace/Marvensha/tiktok/videos/ — audio stripped, WebM VP9 + MP4 H.264, posters).
-  Product grid widget: whatsapp-sync/widget/. Live rows: /api/products. Fallback: products.json (SAMPLE for now).
+  Photo catalog: #catalog, rendered by script.js from CATALOG.
 -->
 <html lang="fr">
 <head>
@@ -40,7 +40,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="whatsapp-sync/widget/marvensha-products.css">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
@@ -167,14 +166,6 @@
       <noscript><p class="section-sub">WhatsApp : <a href="https://wa.me/50947321971">+509 4732 1971</a></p></noscript>
     </div>
   </section>
-
-  <!-- PRODUCTS — catalog grid. /api/products returns published Supabase rows.
-       products.json is the fallback when that response fails or has no products (SAMPLE until the catalog is real).
-       data-lang is a widget-supported attribute that script.js keeps in sync with the language toggle
-       (Kreyòl falls back to French in the widget). -->
-  <section id="products" data-source="/api/products" data-fallback="products.json" data-lang="fr"></section>
-  <script>window.MARVENSHA_PRODUCTS_CONFIG = { whatsappNumber: "50947321971", brandName: "MARVENSHA" };</script>
-  <script src="whatsapp-sync/widget/marvensha-products.js" defer></script>
 
   <!-- HOW LASER ENGRAVING WORKS -->
   <section class="section engraving" id="engraving" aria-labelledby="engraving-title">

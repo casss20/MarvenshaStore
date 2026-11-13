@@ -300,14 +300,6 @@ function applyLang(lang) {
   renderVideos();
   document.querySelectorAll('.motion-slot.has-loop').forEach(sl => { const b = sl.querySelector('.loop-toggle'); if (b) { b.dataset.label = t('loop_' + sl.dataset.loop); b.dispatchEvent(new Event('mv-sync')); } });
   updateHeroToggle();
-  // Keep the CoS widget in step (fr/en only; Kreyòl -> French)
-  const prod = document.getElementById("products");
-  if (prod) {
-    const wl = LANG === "en" ? "en" : "fr";
-    const changed = prod.dataset.lang !== wl;
-    prod.dataset.lang = wl;
-    if (changed && window.MarvenshaProducts) window.MarvenshaProducts.init();
-  }
   try { localStorage.setItem("mv_lang", LANG); } catch (e) {}
 }
 
@@ -553,14 +545,6 @@ function setupFloat() {
   }, { threshold: 0 });
   targets.forEach(el => io.observe(el));
 }
-
-/* Set the widget language before the widget script initialises (both scripts are deferred; this one runs first). */
-(function () {
-  let l = new URLSearchParams(location.search).get("lang");
-  if (!l) { try { l = localStorage.getItem("mv_lang"); } catch (e) {} }
-  const prod = document.getElementById("products");
-  if (prod) prod.dataset.lang = l === "en" ? "en" : "fr";
-})();
 
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(location.search);
