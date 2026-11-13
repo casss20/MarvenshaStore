@@ -6,19 +6,21 @@
  *
  * Drop-in:
  *   <link rel="stylesheet" href="whatsapp-sync/widget/marvensha-products.css">
- *   <section id="products" data-source="products.json"></section>
+ *   <section id="products" data-source="/api/products" data-fallback="products.json"></section>
  *   <script src="whatsapp-sync/widget/marvensha-products.js" defer></script>
  *
  * Optional config (before the script):
  *   <script>window.MARVENSHA_PRODUCTS_CONFIG = { whatsappNumber: "50947321971", lang: "fr" };</script>
- * No secrets here: this file only reads the public products.json.
+ * No secrets here. data-source is fetched first (/api/products). If that request
+ * fails or returns no products, data-fallback (products.json) is rendered instead.
  */
 (function () {
   "use strict";
 
   var DEFAULTS = {
     mountSelector: "#products",
-    source: "products.json",            // or "/api/products" for the serverless option
+    source: "/api/products",            // public catalog; falls back to fallback below
+    fallback: "products.json",          // used when source fails or returns zero products
     whatsappNumber: "50947321971",      // +509 4732 1971, from the store's TikTok bio
     brandName: "MARVENSHA",             // confirmed spelling (founder, 2026-11-13)
     lang: "auto",                       // "fr", "en" or "auto" (French unless the browser is English)
@@ -212,6 +214,19 @@
     root.setAttribute("data-mvp-count", String(products.length));
   }
 
+  function productList(data) {
+    return (data && Array.isArray(data.products)) ? data.products : [];
+  }
+
+  function fetchJson(url) {
+    return fetch(url, { cache: "no-cache" }).then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    });
+  }
+
+  var loadSeq = 0;
+
   function init() {
     var user = window.MARVENSHA_PRODUCTS_CONFIG || {};
     var cfg = {};
@@ -220,6 +235,7 @@
     var root = document.querySelector(cfg.mountSelector);
     if (!root) { console.warn("[marvensha-products] mount point " + cfg.mountSelector + " not found"); return; }
     if (root.dataset.source) cfg.source = root.dataset.source;
+    if (root.dataset.fallback) cfg.fallback = root.dataset.fallback;
     if (root.dataset.whatsapp) cfg.whatsappNumber = root.dataset.whatsapp;
     if (root.dataset.lang) cfg.lang = root.dataset.lang;
     if (!cfg.placeholderImage) cfg.placeholderImage = placeholderSvg();
@@ -227,10 +243,37 @@
 
     // Inline data (used by the offline demo) wins over fetching.
     if (window.MARVENSHA_PRODUCTS_DATA) { render(root, window.MARVENSHA_PRODUCTS_DATA, cfg, t); return; }
-    fetch(cfg.source, { cache: "no-cache" })
-      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-      .then(function (d) { render(root, d, cfg, t); })
-      .catch(function (e) { console.warn("[marvensha-products]", e); render(root, null, cfg, t); });
+
+    var seq = ++loadSeq;
+    var fallback = cfg.fallback;
+
+    function show(data) {
+      if (seq !== loadSeq) return;
+      render(root, data, cfg, t);
+    }
+
+    function fromFallback(reason) {
+      if (!fallback || fallback === cfg.source) {
+        console.warn("[marvensha-products]", reason);
+        show(null);
+        return;
+      }
+      fetchJson(fallback).then(function (data) {
+        if (!productList(data).length) throw new Error("empty fallback");
+        show(data);
+      }).catch(function (err) {
+        console.warn("[marvensha-products]", reason, err);
+        show(null);
+      });
+    }
+
+    fetchJson(cfg.source).then(function (data) {
+      if (!productList(data).length) {
+        fromFallback(new Error("empty catalog"));
+        return;
+      }
+      show(data);
+    }).catch(fromFallback);
   }
 
   window.MarvenshaProducts = { init: init, waLink: waLink, _t: T };

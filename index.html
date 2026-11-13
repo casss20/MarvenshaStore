@@ -7,7 +7,7 @@
   Kreyòl strings = best attempt, NEEDS NATIVE-SPEAKER REVIEW.
   Media: everything served lives in site/media/ (stills from /workspace/Marvensha/tiktok/stills/, clips transcoded
   from /workspace/Marvensha/tiktok/videos/ — audio stripped, WebM VP9 + MP4 H.264, posters).
-  Product grid widget: whatsapp-sync/widget/ (CoS module, copied unmodified), data products.json (SAMPLE for now).
+  Product grid widget: whatsapp-sync/widget/. Live rows: /api/products. Fallback: products.json (SAMPLE for now).
 -->
 <html lang="fr">
 <head>
@@ -155,10 +155,11 @@
     </div>
   </section>
 
-  <!-- PRODUCTS — CoS WhatsApp catalog widget (SETUP.md step 7). products.json = copy of whatsapp-sync/products.sample.json
-       (SAMPLE DATA, not real products/prices) until the sync job overwrites it. data-lang is a widget-supported
-       attribute that script.js keeps in sync with the language toggle (Kreyòl falls back to French in the widget). -->
-  <section id="products" data-source="products.json" data-lang="fr"></section>
+  <!-- PRODUCTS — catalog grid. /api/products returns published Supabase rows.
+       products.json is the fallback when that response fails or has no products (SAMPLE until the catalog is real).
+       data-lang is a widget-supported attribute that script.js keeps in sync with the language toggle
+       (Kreyòl falls back to French in the widget). -->
+  <section id="products" data-source="/api/products" data-fallback="products.json" data-lang="fr"></section>
   <script>window.MARVENSHA_PRODUCTS_CONFIG = { whatsappNumber: "50947321971", brandName: "MARVENSHA" };</script>
   <script src="whatsapp-sync/widget/marvensha-products.js" defer></script>
 

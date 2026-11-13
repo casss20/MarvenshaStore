@@ -1,6 +1,8 @@
 # Marvensha Jewelry Store
 
-Static landing page for Marvensha Jewelry Store. Vercel serves this repository as a plain static site: there is no install or build step. `index.html` is at the repository root, and `vercel.json` only sets cache headers for `/media`.
+Static landing page for Marvensha Jewelry Store, plus one serverless function. Vercel serves this repository with no install or build step. `index.html` is at the repository root. `vercel.json` only sets cache headers for `/media` and does not rewrite `/api`, so `api/products.js` is served at `/api/products`.
+
+`GET /api/products` reads published rows from Supabase, using `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` from the Vercel project. The product grid requests that URL and falls back to `products.json` when the response fails or contains no products.
 
 ## Local preview
 
@@ -10,6 +12,6 @@ From the repository root:
 python3 -m http.server 8080
 ```
 
-Open http://localhost:8080.
+Open http://localhost:8080. A static server has no `/api/products`, so the grid shows `products.json`.
 
 The page keeps `<meta name="robots" content="noindex, nofollow">` so this draft stays out of search indexes. Product cards under `sample/` are placeholder artwork and sample catalog data, not live inventory.
