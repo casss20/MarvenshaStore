@@ -71,6 +71,38 @@ const PRODUCT_VIDEOS = [
     name: { fr: "Commandes emballées", ht: "Kòmand ki fin anbale", en: "Orders, gift-wrapped" } }
 ];
 
+/* CATALOG — studio photos supplied for the page. Engraved words visible in a photo are examples, not a fixed inscription. */
+const CATALOG = [
+  { id: "bar-bust", base: "media/catalog/bar-bust", w: 864, h: 1080,
+    name: { fr: "Collier barre verticale", ht: "Kolye ba vètikal", en: "Vertical bar necklace" },
+    desc: { fr: "Barre gravée sur une chaîne, présentée sur velours émeraude.", ht: "Ba grave sou yon chèn, prezante sou vlou vèt emwòd.", en: "Engraved bar on a chain, shown on emerald velvet." },
+    alt: { fr: "Collier barre plaqué or gravé « Marvensha 4 ans » et « Love, Live, Wear Jewelry », sur un buste en velours émeraude, sac cadeau MARVENSHA derrière", ht: "Kolye ba plake lò grave « Marvensha 4 ans » ak « Love, Live, Wear Jewelry », sou yon bis an vlou vèt emwòd, sache kado MARVENSHA dèyè", en: "Gold-tone bar necklace engraved “Marvensha 4 ans” and “Love, Live, Wear Jewelry”, on an emerald velvet bust, MARVENSHA gift bag behind" } },
+  { id: "medallion", base: "media/catalog/medallion", w: 746, h: 1080,
+    name: { fr: "Pendentif médaillon", ht: "Pandantif meday", en: "Medallion pendant" },
+    desc: { fr: "Médaille ronde gravée d'un cœur, sur une chaîne fine.", ht: "Meday won grave ak yon kè, sou yon chèn fen.", en: "Round medallion engraved with a heart, on a fine chain." },
+    alt: { fr: "Pendentif rond plaqué or gravé d'un cœur, sur un buste en velours émeraude", ht: "Pandantif won plake lò grave ak yon kè, sou yon bis an vlou vèt emwòd", en: "Gold-tone round pendant engraved with a heart, on an emerald velvet bust" } },
+  { id: "bracelet", base: "media/catalog/bracelet", w: 1080, h: 734, wide: true,
+    name: { fr: "Bracelet ID à maillons", ht: "Braslè ID ak mayon", en: "Link ID bracelet" },
+    desc: { fr: "Plaque gravée d'un prénom, livrée dans l'écrin bleu marine au logo doré.", ht: "Plak grave ak yon non, li vini nan bwat ble maren an ak logo an lò.", en: "Plate engraved with a name, delivered in the navy box with the gold logo." },
+    alt: { fr: "Bracelet plaqué or à maillons, plaque gravée « Edouard », dans un écrin bleu marine MARVENSHA ouvert", ht: "Braslè plake lò ak mayon, plak grave « Edouard », nan yon bwat ble maren MARVENSHA ki louvri", en: "Gold-tone link bracelet, plate engraved “Edouard”, in an open navy MARVENSHA box" } },
+  { id: "ensemble", base: "media/catalog/ensemble", w: 810, h: 1080,
+    name: { fr: "Écrin, sac et bijoux", ht: "Bwat, sache ak bijou", en: "Box, bag and pieces" },
+    desc: { fr: "Collier barre, pendentif et bracelet ID, avec le sac et l'écrin de la boutique.", ht: "Kolye ba, pandantif ak braslè ID, ak sache ak bwat boutik la.", en: "Bar necklace, pendant and ID bracelet, with the shop bag and box." },
+    alt: { fr: "Ensemble MARVENSHA : collier barre, pendentif, bracelet ID dans son écrin bleu marine, et sac cadeau", ht: "Ansanm MARVENSHA : kolye ba, pandantif, braslè ID nan bwat ble maren li, ak sache kado", en: "MARVENSHA set: bar necklace, pendant, ID bracelet in its navy box, and gift bag" } },
+  { id: "rose-box", base: "media/catalog/rose-box", w: 780, h: 1080,
+    name: { fr: "Collier barre à la rose", ht: "Kolye ba ak yon roz", en: "Rose bar necklace" },
+    desc: { fr: "Barre ajourée d'une rose, dans l'écrin, prête à offrir.", ht: "Ba ajoure ak yon roz, nan bwat la, pare pou bay kado.", en: "Bar cut out with a rose, in the box, ready to give." },
+    alt: { fr: "Collier barre plaqué or avec une rose ajourée, gravé « Marvensha 4 ans », dans un écrin bleu marine ouvert, sac cadeau MARVENSHA derrière", ht: "Kolye ba plake lò ak yon roz ajoure, grave « Marvensha 4 ans », nan yon bwat ble maren ki louvri, sache kado MARVENSHA dèyè", en: "Gold-tone bar necklace with an openwork rose, engraved “Marvensha 4 ans”, in an open navy box, MARVENSHA gift bag behind" } },
+  { id: "bars", base: "media/catalog/bars", w: 1080, h: 746,
+    name: { fr: "Barres gravées", ht: "Ba ki grave", en: "Engraved bars" },
+    desc: { fr: "Deux barres sur chaîne : une phrase courte sur chacune.", ht: "De ba sou chèn : yon ti fraz sou chak youn.", en: "Two bars on a chain: a short phrase on each." },
+    alt: { fr: "Deux pendentifs barre plaqué or, l'un gravé « Marvensha 4 ans », l'autre « Love, Live, Wear jewelry »", ht: "De pandantif ba plake lò, youn grave « Marvensha 4 ans », lòt la « Love, Live, Wear jewelry »", en: "Two gold-tone bar pendants, one engraved “Marvensha 4 ans”, the other “Love, Live, Wear jewelry”" } },
+  { id: "pair", base: "media/catalog/pair", w: 1080, h: 734,
+    name: { fr: "Colliers barre personnalisés", ht: "Kolye ba pèsonalize", en: "Personalized bar necklaces" },
+    desc: { fr: "Papillons et rose le long de la chaîne, plaque gravée à votre nom.", ht: "Papiyon ak roz sou chèn nan, plak grave ak non w.", en: "Butterflies and a rose along the chain, plate engraved with your name." },
+    alt: { fr: "Deux colliers barre plaqué or avec papillons et roses, gravés « Marvensha 4 ans » et « Gel Kinda », sur un buste en velours émeraude", ht: "De kolye ba plake lò ak papiyon ak roz, grave « Marvensha 4 ans » ak « Gel Kinda », sou yon bis an vlou vèt emwòd", en: "Two gold-tone bar necklaces with butterflies and roses, engraved “Marvensha 4 ans” and “Gel Kinda”, on an emerald velvet bust" } }
+];
+
 /* =====================================================================
    TRANSLATIONS — fr (default), ht = Kreyòl BEST ATTEMPT (NEEDS NATIVE-SPEAKER REVIEW), en.
    Values may contain simple inline HTML authored here only.
@@ -82,7 +114,7 @@ const I18N = {
     hero_clip_label: "animation d'arrière-plan",
     skip: "Aller au contenu", draft: "Aperçu brouillon — les éléments provisoires sont marqués",
     ph: "À compléter", ph_link: "Lien à venir", ph_name: "Nom à confirmer",
-    nav_collection: "Collection", nav_videos: "Vidéos", nav_engraving: "Gravure", nav_locations: "Où nous trouver",
+    nav_collection: "Collection", nav_catalog: "Catalogue", nav_videos: "Vidéos", nav_engraving: "Gravure", nav_locations: "Où nous trouver",
     hero_eyebrow: "Plaqué or · gravure laser",
     hero_title: "Votre nom,<br><em>gravé pour briller.</em>",
     hero_lede: "Colliers, pendentifs et bracelets plaqué or, gravés au laser à votre nom et prêts à offrir.",
@@ -94,6 +126,8 @@ const I18N = {
     proof3_k: "Okap &amp; Limbé", proof3_v: "Deux boutiques, commande sur WhatsApp",
     col_eyebrow: "Pièces signature", col_title: "Choisissez, nous gravons",
     col_sub: "Chaque pièce se personnalise. Touchez une photo pour voir le détail, puis écrivez-nous sur WhatsApp.",
+    cat_eyebrow: "Le catalogue", cat_title: "Les pièces en photo",
+    cat_sub: "Des modèles gravés au laser, dans leur écrin. Le texte se personnalise : envoyez-nous le prénom ou la phrase sur WhatsApp.",
     metal: "Plaqué or", engr: "Gravure laser personnalisée", size: "Dimensions : à confirmer",
     price: "Prix sur WhatsApp", card_wa: "Commander sur WhatsApp",
     img_detail: "Détail", img_scale: "Vue d'ensemble", show_img: "Voir la photo",
@@ -131,7 +165,7 @@ const I18N = {
     hero_clip_label: "animasyon dèyè a",
     skip: "Ale nan kontni an", draft: "Bouyon — sa ki poko fini make konsa",
     ph: "Pou konplete", ph_link: "Lyen ap vini", ph_name: "Non pou konfime",
-    nav_collection: "Koleksyon", nav_videos: "Videyo", nav_engraving: "Gravi", nav_locations: "Kote nou ye",
+    nav_collection: "Koleksyon", nav_catalog: "Katalog", nav_videos: "Videyo", nav_engraving: "Gravi", nav_locations: "Kote nou ye",
     hero_eyebrow: "Plake lò · gravi lazè",
     hero_title: "Non w,<br><em>grave pou l klere.</em>",
     hero_lede: "Kolye, pandantif ak braslè plake lò, grave ak lazè ak non w, pare pou bay kado.",
@@ -143,6 +177,8 @@ const I18N = {
     proof3_k: "Okap &amp; Limbé", proof3_v: "De boutik, kòmande sou WhatsApp",
     col_eyebrow: "Bijou siyati", col_title: "Ou chwazi, nou grave",
     col_sub: "Nou ka pèsonalize chak bijou. Touche yon foto pou wè detay la, epi ekri nou sou WhatsApp.",
+    cat_eyebrow: "Katalog la", cat_title: "Bijou yo an foto",
+    cat_sub: "Modèl ki grave ak lazè, nan bwat yo. Tèks la pèsonalize : voye nou non an oswa fraz la sou WhatsApp.",
     metal: "Plake lò", engr: "Gravi lazè pèsonalize", size: "Dimansyon : pou konfime",
     price: "Pri sou WhatsApp", card_wa: "Kòmande sou WhatsApp",
     img_detail: "Detay", img_scale: "Tout bijou a", show_img: "Gade foto",
@@ -179,7 +215,7 @@ const I18N = {
     hero_clip_label: "background animation",
     skip: "Skip to content", draft: "Draft preview — placeholders are marked",
     ph: "Placeholder", ph_link: "Link coming", ph_name: "Name to confirm",
-    nav_collection: "Collection", nav_videos: "Videos", nav_engraving: "Engraving", nav_locations: "Find us",
+    nav_collection: "Collection", nav_catalog: "Catalog", nav_videos: "Videos", nav_engraving: "Engraving", nav_locations: "Find us",
     hero_eyebrow: "Gold-tone · laser engraving",
     hero_title: "Your name,<br><em>engraved to shine.</em>",
     hero_lede: "Gold-tone necklaces, pendants and bracelets, laser-engraved with your name and ready to gift.",
@@ -191,6 +227,8 @@ const I18N = {
     proof3_k: "Okap &amp; Limbé", proof3_v: "Two shops, order on WhatsApp",
     col_eyebrow: "Signature pieces", col_title: "You choose, we engrave",
     col_sub: "Every piece can be personalized. Tap a photo to see the detail, then message us on WhatsApp.",
+    cat_eyebrow: "The catalog", cat_title: "The pieces, in photos",
+    cat_sub: "Laser-engraved styles, shown in their boxes. The wording is yours: send us the name or phrase on WhatsApp.",
     metal: "Gold-tone (gold-plated)", engr: "Custom laser engraving", size: "Size: to be confirmed",
     price: "Price on WhatsApp", card_wa: "Order on WhatsApp",
     img_detail: "Detail", img_scale: "Full view", show_img: "Show photo",
@@ -246,6 +284,7 @@ function applyLang(lang) {
   document.querySelectorAll(".wa-link").forEach(a => { a.href = general; });
   renderMedallion();
   renderShowcase();
+  renderCatalog();
   renderVideos();
   document.querySelectorAll('.motion-slot.has-loop').forEach(sl => { const b = sl.querySelector('.loop-toggle'); if (b) { b.dataset.label = t('loop_' + sl.dataset.loop); b.dispatchEvent(new Event('mv-sync')); } });
   updateHeroToggle();
@@ -310,6 +349,31 @@ function renderShowcase() {
     track.addEventListener("scroll", () => { const i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); if (+g.dataset.active !== i) set(i, false); }, { passive: true });
   });
   wireLoops(grid);
+}
+
+/* ---------- Catalog photos ---------- */
+function renderCatalog() {
+  const grid = document.getElementById("catalog-grid");
+  if (!grid) return;
+  grid.innerHTML = CATALOG.map(p => {
+    const name = L(p.name);
+    return `<li class="cat-card${p.wide ? " is-wide" : ""}">
+      <figure class="cat-media">
+        <picture>
+          <source srcset="${p.base}.webp" type="image/webp">
+          <img src="${p.base}.jpg" alt="${esc(L(p.alt))}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async">
+        </picture>
+      </figure>
+      <div class="cat-body">
+        <h3>${esc(name)}</h3>
+        <p>${esc(L(p.desc))}</p>
+        <p class="sc-price">${t("price")}</p>
+        <a class="btn btn-wa" href="${waUrl(productMsg(name))}" target="_blank" rel="noopener" aria-label="${esc(t("card_wa"))} : ${esc(name)}">
+          <svg class="btn-icon" aria-hidden="true"><use href="#wa-icon"/></svg><span>${t("card_wa")}<span class="wa-num">${WHATSAPP_DISPLAY}</span></span>
+        </a>
+      </div>
+    </li>`;
+  }).join("");
 }
 
 /* ---------- Product videos ---------- */
