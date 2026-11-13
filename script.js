@@ -100,7 +100,19 @@ const CATALOG = [
   { id: "pair", base: "media/catalog/pair", w: 1080, h: 734,
     name: { fr: "Colliers barre personnalisés", ht: "Kolye ba pèsonalize", en: "Personalized bar necklaces" },
     desc: { fr: "Papillons et rose le long de la chaîne, plaque gravée à votre nom.", ht: "Papiyon ak roz sou chèn nan, plak grave ak non w.", en: "Butterflies and a rose along the chain, plate engraved with your name." },
-    alt: { fr: "Deux colliers barre plaqué or avec papillons et roses, gravés « Marvensha 4 ans » et « Gel Kinda », sur un buste en velours émeraude", ht: "De kolye ba plake lò ak papiyon ak roz, grave « Marvensha 4 ans » ak « Gel Kinda », sou yon bis an vlou vèt emwòd", en: "Two gold-tone bar necklaces with butterflies and roses, engraved “Marvensha 4 ans” and “Gel Kinda”, on an emerald velvet bust" } }
+    alt: { fr: "Deux colliers barre plaqué or avec papillons et roses, gravés « Marvensha 4 ans » et « Gel Kinda », sur un buste en velours émeraude", ht: "De kolye ba plake lò ak papiyon ak roz, grave « Marvensha 4 ans » ak « Gel Kinda », sou yon bis an vlou vèt emwòd", en: "Two gold-tone bar necklaces with butterflies and roses, engraved “Marvensha 4 ans” and “Gel Kinda”, on an emerald velvet bust" } },
+  { id: "trio", base: "media/catalog/trio", w: 819, h: 1024,
+    name: { fr: "Bracelets ID tressés", ht: "Braslè ID trese", en: "Woven ID bracelets" },
+    desc: { fr: "Trois finitions : argenté, noir et doré. La plaque se grave à votre nom.", ht: "Twa fini : ajan, nwa ak lò. Plak la grave ak non w.", en: "Three finishes: silver, black and gold. The plate is engraved with your name." },
+    alt: { fr: "Trois bracelets ID à maille tressée, argenté, noir et doré, devant une carte MARVENSHA", ht: "Twa braslè ID ak may trese, ajan, nwa ak lò, devan yon kat MARVENSHA", en: "Three woven-link ID bracelets in silver, black and gold, in front of a MARVENSHA card" } },
+  { id: "flower", base: "media/catalog/flower", w: 1024, h: 682,
+    name: { fr: "Collier barre à fleur", ht: "Kolye ba ak flè", en: "Flower bar necklace" },
+    desc: { fr: "Barre gravée d'un prénom, avec une fleur émaillée rose et des feuilles.", ht: "Ba grave ak yon non, ak yon flè woz emaye ak fèy.", en: "Bar engraved with a name, with a pink enamel flower and leaves." },
+    alt: { fr: "Collier plaqué or, barre gravée « Kylie Caimnte », fleur rose émaillée et feuilles vertes", ht: "Kolye plake lò, ba grave « Kylie Caimnte », flè woz emaye ak fèy vèt", en: "Gold-tone necklace, bar engraved “Kylie Caimnte”, pink enamel flower and green leaves" } },
+  { id: "badge", base: "media/catalog/badge", w: 1024, h: 341, wide: true,
+    name: { fr: "Plaque nominative", ht: "Plak non", en: "Nameplate" },
+    desc: { fr: "Plaque rectangulaire gravée pour un nom, un titre ou le nom d'une entreprise.", ht: "Plak rektangilè grave pou yon non, yon tit oswa non yon biznis.", en: "Rectangular plate engraved with a name, a title or a business name." },
+    alt: { fr: "Plaque dorée gravée « Laly's Cake Service Traiteur », « Lamour Carlange Laly » et « CEO »", ht: "Plak an lò grave « Laly's Cake Service Traiteur », « Lamour Carlange Laly » ak « CEO »", en: "Gold plate engraved “Laly's Cake Service Traiteur”, “Lamour Carlange Laly” and “CEO”" } }
 ];
 
 /* =====================================================================
