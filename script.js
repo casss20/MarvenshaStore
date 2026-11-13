@@ -129,6 +129,9 @@ const I18N = {
     menu_open: "Menu", menu_close: "Fermer",
     nav_home: "Accueil", nav_collection: "Collection", nav_catalog: "Catalogue", nav_story: "Notre histoire", nav_videos: "Vidéos", nav_engraving: "Gravure", nav_locations: "Où nous trouver",
     col_page_title: "La collection — {brand}", col_page_h1: "La collection", col_page_link: "Voir toute la collection",
+    col_k1: "Plaqué or", col_v1: "Collier, bracelet, pendentif ou plaque : choisissez le modèle.",
+    col_k2: "Votre texte", col_v2: "Le prénom, la date ou la phrase se grave pour vous. Les mots sur les photos sont des exemples.",
+    col_k3: "Prêt à offrir", col_v3: "Chaque pièce part dans l'écrin bleu marine et le sac MARVENSHA.",
     story_title_doc: "Notre histoire — {brand}",
     story_eyebrow: "Notre histoire", story_title: "La joie, <em>gravée.</em>",
     story_name: "Evens Julot", story_role: "Fondateur",
@@ -162,7 +165,7 @@ const I18N = {
     s1_t: "Choisissez votre bijou", s1_p: "Collier barre, pendentif ou bracelet ID : choisissez le modèle qui vous plaît.",
     s2_t: "Envoyez vos mots", s2_p: "Écrivez-nous sur WhatsApp le prénom, la date ou la phrase à graver.",
     s3_t: "Gravure &amp; écrin", s3_p: "Nous gravons votre bijou au laser et le préparons dans un écrin, prêt à offrir.",
-    eng_note: "Nombre de caractères, polices et délai : à confirmer par la boutique.",
+    eng_note: "Écrivez-nous le texte à graver. Nous confirmons avec vous la longueur et le délai.",
     gift_eyebrow: "L'emballage", gift_title: "Prêt à offrir, <em>dès l'ouverture.</em>",
     gift_p: "Chaque bijou part dans un écrin MARVENSHA, glissé dans un sac blanc à anses en corde bleu marine, avec ruban.",
     gift_alt: "Sac cadeau blanc MARVENSHA à anses en corde bleu marine, avec ruban",
@@ -170,7 +173,7 @@ const I18N = {
     pack1: "Écrin bleu marine, logo doré", pack2: "Sac blanc, anses en corde marine", pack3: "Présenté sur velours émeraude",
     loc_eyebrow: "Où nous trouver", loc_title: "Deux adresses",
     loc_okap: "Route nationale #1, carrefour Champin", loc_limbe: "Foureau, Ave Pétion",
-    loc_note: "Horaires à confirmer. Écrivez-nous sur WhatsApp avant de passer.",
+    loc_note: "Écrivez-nous sur WhatsApp avant de passer : nous vous donnons les horaires.",
     social_eyebrow: "Suivez-nous", social_title: "Les nouveautés en premier",
     cta_title: "Prêt à le rendre unique ?",
     cta_p: "Dites-nous le bijou et les mots à graver. Nous vous répondons sur WhatsApp pour confirmer les détails et le prix.",
@@ -189,6 +192,9 @@ const I18N = {
     menu_open: "Meni", menu_close: "Fèmen",
     nav_home: "Akèy", nav_collection: "Koleksyon", nav_catalog: "Katalog", nav_story: "Istwa nou", nav_videos: "Videyo", nav_engraving: "Gravi", nav_locations: "Kote nou ye",
     col_page_title: "Koleksyon an — {brand}", col_page_h1: "Koleksyon an", col_page_link: "Gade tout koleksyon an",
+    col_k1: "Plake lò", col_v1: "Kolye, braslè, pandantif oswa plak : chwazi modèl la.",
+    col_k2: "Tèks ou", col_v2: "Non an, dat la oswa fraz la grave pou ou. Mo ki sou foto yo se egzanp.",
+    col_k3: "Pare pou kado", col_v3: "Chak bijou ale nan bwat ble maren an ak sache MARVENSHA a.",
     story_title_doc: "Istwa nou — {brand}",
     story_eyebrow: "Istwa nou", story_title: "Lajwa, <em>grave.</em>",
     story_name: "Evens Julot", story_role: "Fondatè",
@@ -222,7 +228,7 @@ const I18N = {
     s1_t: "Chwazi bijou w", s1_p: "Kolye ba, pandantif oswa braslè ID : chwazi modèl ou renmen an.",
     s2_t: "Voye mo w yo", s2_p: "Ekri nou sou WhatsApp non an, dat la oswa fraz pou nou grave a.",
     s3_t: "Gravi &amp; bwat kado", s3_p: "Nou grave bijou w ak lazè epi nou mete l nan yon bwat, pare pou bay kado.",
-    eng_note: "Konbyen lèt, ki estil ekriti ak delè : boutik la ap konfime.",
+    eng_note: "Ekri nou tèks pou nou grave a. Nou konfime ak ou longè a ak delè a.",
     gift_eyebrow: "Anbalaj la", gift_title: "Pare pou bay kado, <em>depi w louvri l.</em>",
     gift_p: "Chak bijou ale nan yon bwat MARVENSHA, nan yon sache blan ak manch kòd ble maren, ak yon riban.",
     gift_alt: "Sache kado blan MARVENSHA ak manch kòd ble maren ak riban",
@@ -230,7 +236,7 @@ const I18N = {
     pack1: "Bwat ble maren, logo an lò", pack2: "Sache blan, manch kòd ble maren", pack3: "Prezante sou vlou vèt emwòd",
     loc_eyebrow: "Kote nou ye", loc_title: "De adrès",
     loc_okap: "Wout nasyonal #1, kafou Chanpen", loc_limbe: "Fouro, Ave Pétion",
-    loc_note: "Lè yo pou konfime. Ekri nou sou WhatsApp anvan ou pase.",
+    loc_note: "Ekri nou sou WhatsApp anvan ou pase : n ap di ou lè yo.",
     social_eyebrow: "Swiv nou", social_title: "Wè nouvo bijou yo an premye",
     cta_title: "Ou pare pou fè l pou ou ?",
     cta_p: "Di nou ki bijou ak ki mo pou nou grave. N ap reponn ou sou WhatsApp pou konfime detay yo ak pri a.",
@@ -248,6 +254,9 @@ const I18N = {
     menu_open: "Menu", menu_close: "Close",
     nav_home: "Home", nav_collection: "Collection", nav_catalog: "Catalog", nav_story: "Our story", nav_videos: "Videos", nav_engraving: "Engraving", nav_locations: "Find us",
     col_page_title: "The collection — {brand}", col_page_h1: "The collection", col_page_link: "See the whole collection",
+    col_k1: "Gold-tone", col_v1: "Necklace, bracelet, pendant or plate: choose the piece.",
+    col_k2: "Your words", col_v2: "The name, date or phrase is engraved for you. The words in the photos are examples.",
+    col_k3: "Ready to give", col_v3: "Each piece leaves in the navy box and the MARVENSHA bag.",
     story_title_doc: "Our story — {brand}",
     story_eyebrow: "Our story", story_title: "Joy, <em>engraved.</em>",
     story_name: "Evens Julot", story_role: "Founder",
@@ -281,7 +290,7 @@ const I18N = {
     s1_t: "Choose your piece", s1_p: "Bar necklace, pendant or ID bracelet: pick the style you love.",
     s2_t: "Send your words", s2_p: "Message us on WhatsApp with the name, date or phrase to engrave.",
     s3_t: "Engraved &amp; boxed", s3_p: "We laser-engrave your piece and pack it in a gift box, ready to give.",
-    eng_note: "Character limits, fonts and lead time: to be confirmed by the shop.",
+    eng_note: "Send us the words to engrave. We confirm the length and the timing with you.",
     gift_eyebrow: "Packaging", gift_title: "Ready to give, <em>straight from the box.</em>",
     gift_p: "Each piece leaves in a MARVENSHA box, inside a white bag with navy rope handles and a ribbon.",
     gift_alt: "White MARVENSHA gift bag with navy rope handles and ribbon",
@@ -289,7 +298,7 @@ const I18N = {
     pack1: "Navy box, gold logo", pack2: "White bag, navy rope handles", pack3: "Presented on emerald velvet",
     loc_eyebrow: "Find us", loc_title: "Two locations",
     loc_okap: "Route Nationale #1, Carrefour Champin", loc_limbe: "Foureau, Ave Pétion",
-    loc_note: "Opening hours to be confirmed. Message us on WhatsApp before you visit.",
+    loc_note: "Message us on WhatsApp before you visit and we'll tell you the hours.",
     social_eyebrow: "Follow us", social_title: "See new pieces first",
     cta_title: "Ready to make it yours?",
     cta_p: "Tell us the piece and the words to engrave. We'll reply on WhatsApp to confirm the details and price.",
@@ -350,12 +359,11 @@ function renderShowcase() {
         </div>
       </div>
       <div class="sc-body">
-        <div class="sc-title"><h3>${esc(name)}</h3><span class="ph-tag">${t("ph_name")}</span></div>
+        <div class="sc-title"><h3>${esc(name)}</h3></div>
         <p class="sc-desc">${esc(L(p.desc))}</p>
         <ul class="sc-specs">
           <li><span class="spec-dot" aria-hidden="true"></span>${t("metal")}</li>
           <li><span class="spec-dot" aria-hidden="true"></span>${t("engr")}</li>
-          <li class="spec-tbd"><span class="spec-dot" aria-hidden="true"></span>${t("size")}</li>
         </ul>
         <p class="sc-price">${t("price")}</p>
         <a class="btn btn-wa" href="${waUrl(productMsg(name))}" target="_blank" rel="noopener" aria-label="${esc(t("card_wa"))} : ${esc(name)}">
@@ -386,7 +394,9 @@ function renderShowcase() {
 function renderStaticCatalog() {
   const grid = document.getElementById("catalog-grid");
   if (!grid) return;
-  grid.innerHTML = CATALOG.map(p => {
+  const cap = Number(grid.dataset.limit);
+  const pieces = Number.isFinite(cap) && cap > 0 ? CATALOG.slice(0, cap) : CATALOG;
+  grid.innerHTML = pieces.map(p => {
     const name = L(p.name);
     return `<li class="cat-card${p.wide ? " is-wide" : ""}">
       <figure class="cat-media">
@@ -458,7 +468,8 @@ function renderCatalog() {
     grid.after(more);
     more.addEventListener("click", () => loadCatalog(true));
   }
-  more.hidden = !catalogHasMore || catalogLoading;
+  const preview = Number(grid.dataset.limit) > 0;
+  more.hidden = preview || !catalogHasMore || catalogLoading;
   more.textContent = catalogText("more");
   if (catalogLoading && liveCatalog === null) { status.textContent = catalogText("loading"); grid.replaceChildren(); return; }
   if (liveCatalog === null) {
@@ -468,7 +479,9 @@ function renderCatalog() {
   }
   status.textContent = liveCatalog.length ? "" : catalogText("empty");
   grid.replaceChildren();
-  for (const p of liveCatalog) {
+  const cap = Number(grid.dataset.limit);
+  const rows = Number.isFinite(cap) && cap > 0 ? liveCatalog.slice(0, cap) : liveCatalog;
+  for (const p of rows) {
     const li = document.createElement("li"); li.className = "cat-card";
     const figure = document.createElement("figure"); figure.className = "cat-media";
     const imgUrl = safeCatalogImage(p.image_url);
@@ -536,7 +549,7 @@ function renderVideos() {
           <svg class="i-play" aria-hidden="true"><use href="#play-icon"/></svg><svg class="i-pause" aria-hidden="true"><use href="#pause-icon"/></svg>
         </button>
       </div>
-      <div class="video-meta"><h3>${esc(name)}</h3><span class="ph-tag">${t("ph_name")}</span></div>
+      <div class="video-meta"><h3>${esc(name)}</h3></div>
       <div class="video-wa" hidden>
         <p class="video-wa-lead">${t("video_wa_lead")}</p>
         <a class="btn btn-wa" href="${waUrl(productMsg(name))}" target="_blank" rel="noopener">
@@ -620,18 +633,16 @@ function renderMedallion() {
     <div class="feature-media ${c === MEDALLION.tall ? "is-tall" : ""}">${loopHTML(c, `${name} — ${t("img_motion")}`)}</div>
     <div class="feature-copy">
       <p class="eyebrow eyebrow-dark">${t("feat_eyebrow")}</p>
-      <div class="sc-title"><h3>${esc(name)}</h3><span class="ph-tag">${t("ph_name")}</span></div>
+      <div class="sc-title"><h3>${esc(name)}</h3></div>
       <p class="sc-desc">${esc(L(MEDALLION.desc))}</p>
       <ul class="sc-specs">
         <li><span class="spec-dot" aria-hidden="true"></span>${t("metal")}</li>
         <li><span class="spec-dot" aria-hidden="true"></span>${t("engr")}</li>
-        <li class="spec-tbd"><span class="spec-dot" aria-hidden="true"></span>${t("size")}</li>
       </ul>
       <p class="sc-price">${t("price")}</p>
       <a class="btn btn-wa" href="${waUrl(productMsg(name))}" target="_blank" rel="noopener" aria-label="${esc(t("card_wa"))} : ${esc(name)}">
         <svg class="btn-icon" aria-hidden="true"><use href="#wa-icon"/></svg><span>${t("card_wa")}<span class="wa-num">${WHATSAPP_DISPLAY}</span></span>
       </a>
-      <p class="feature-note"><span class="ph-tag">${t("provisional")}</span></p>
     </div>`;
   wireLoops(box);
 }
