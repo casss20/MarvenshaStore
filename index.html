@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--
+  MARVENSHA — one-page landing page DRAFT (static; not deployed, not published). Side project, NOT Nectara.
+  Brand name: MARVENSHA. Single variable in script.js:  const BRAND_NAME = "MARVENSHA";
+  All editable values live at the top of script.js: WHATSAPP_NUMBER, TIKTOK_URL, INSTAGRAM_URL (placeholder),
+  HERO_VIDEO, SHOWCASE (product cards), PRODUCT_VIDEOS, I18N (FR default / Kreyòl / EN).
+  Kreyòl strings = best attempt, NEEDS NATIVE-SPEAKER REVIEW.
+  Media: everything served lives in site/media/ (stills from /workspace/Marvensha/tiktok/stills/, clips transcoded
+  from /workspace/Marvensha/tiktok/videos/ — audio stripped, WebM VP9 + MP4 H.264, posters).
+  Product grid widget: whatsapp-sync/widget/ (CoS module, copied unmodified), data products.json (SAMPLE for now).
+-->
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MARVENSHA — Bijoux personnalisés gravés au laser</title>
+  <meta name="description" content="Bijoux plaqué or personnalisés, gravés au laser : colliers barre, pendentifs, bracelets ID. Okap et Limbé. Commandez sur WhatsApp : +509 4732 1971.">
+  <meta name="robots" content="noindex, nofollow"><!-- DRAFT: remove before launch -->
+  <meta name="theme-color" content="#0B2A5B">
+  <!-- Open Graph / Twitter. og:image is local; make it absolute (https://<domain>/media/og.jpg) and add og:url once a domain exists. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MARVENSHA">
+  <meta property="og:title" content="MARVENSHA — Bijoux personnalisés gravés au laser">
+  <meta property="og:description" content="Bijoux plaqué or gravés au laser à votre nom. Okap et Limbé. Commandez sur WhatsApp.">
+  <meta property="og:image" content="media/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Collier barre plaqué or sur un buste en velours émeraude, logo MARVENSHA">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="ht_HT">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MARVENSHA — Bijoux personnalisés gravés au laser">
+  <meta name="twitter:description" content="Bijoux plaqué or gravés au laser à votre nom. Okap et Limbé. Commandez sur WhatsApp.">
+  <meta name="twitter:image" content="media/og.jpg">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="media/brand/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="media/brand/apple-touch-icon-180.png">
+  <link rel="preload" as="image" href="media/hero.webp" type="image/webp" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="whatsapp-sync/widget/marvensha-products.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="wa-icon" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/>
+  </symbol>
+  <symbol id="play-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></symbol>
+  <symbol id="pause-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main" data-i18n="skip">Aller au contenu</a>
+
+<div class="draft-banner" role="note">
+  <span data-i18n="draft">Aperçu brouillon — les éléments provisoires sont marqués</span> <span class="ph-tag" data-i18n="ph">À compléter</span>
+</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top">
+      <img class="brand-mark" src="media/brand/marvensha_mark_gold.svg" width="26" height="34" alt="">
+      <span class="brand-word" data-brand>MARVENSHA</span>
+    </a>
+    <nav class="main-nav" aria-label="Menu">
+      <ul class="nav-list">
+        <li><a href="#collection" data-i18n="nav_collection">Collection</a></li>
+        <li><a href="#videos" data-i18n="nav_videos">Vidéos</a></li>
+        <li><a href="#engraving" data-i18n="nav_engraving">Gravure</a></li>
+        <li><a href="#locations" data-i18n="nav_locations">Où nous trouver</a></li>
+      </ul>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="Langue · Lang · Language">
+      <button type="button" data-lang="fr" lang="fr" aria-pressed="true"><span class="lang-long">Français</span><span class="lang-short" aria-hidden="true">FR</span></button>
+      <button type="button" data-lang="ht" lang="ht" aria-pressed="false"><span class="lang-long">Kreyòl</span><span class="lang-short" aria-hidden="true">KR</span></button>
+      <button type="button" data-lang="en" lang="en" aria-pressed="false"><span class="lang-long">English</span><span class="lang-short" aria-hidden="true">EN</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO — one engraved piece. Current image: TikTok still 7694829647925693716_03 (bar necklace on emerald bust).
+       FOUNDER PHOTO SWAP: drop the photo in site/media/ and change the two srcset/src values below (one <picture>).
+       Supporting motion: SHOW_HERO_CLIP in script.js adds the Higgsfield display loop behind the photo, with a visible
+       pause/play button; under prefers-reduced-motion only its poster is shown. -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <!-- Hero background clip slot (Design Director Higgsfield loop, PROVISIONAL): filled by script.js when SHOW_HERO_CLIP = true.
+         The founder's photo below stays the main hero image (framed card in front of the clip). -->
+    <div class="hero-bg" id="hero-bg" aria-hidden="true"></div>
+    <div class="hero-media" id="hero-media">
+      <picture>
+        <source srcset="media/hero.webp" type="image/webp">
+        <img class="hero-img" src="media/hero.jpg" alt="" data-i18n-alt="hero_alt" width="576" height="1024" fetchpriority="high" decoding="async"><!-- HERO IMAGE: swap here -->
+      </picture>
+      <div class="hero-shade" aria-hidden="true"></div>
+    </div>
+    <button type="button" class="hero-toggle" id="hero-toggle" hidden aria-pressed="false">
+      <svg class="i-pause" aria-hidden="true"><use href="#pause-icon"/></svg><svg class="i-play" aria-hidden="true"><use href="#play-icon"/></svg>
+      <span class="hero-toggle-label" data-i18n="hero_pause">Pause</span>
+    </button>
+    <div class="container hero-content">
+      <p class="eyebrow" data-i18n="hero_eyebrow">Plaqué or · gravure laser</p>
+      <h1 id="hero-title" data-i18n="hero_title">Votre nom,<br><em>gravé pour briller.</em></h1>
+      <p class="hero-lede" data-i18n="hero_lede">Colliers, pendentifs et bracelets plaqué or, gravés au laser à votre nom et prêts à offrir.</p>
+      <div class="hero-actions" id="hero-cta">
+        <a class="btn btn-gold wa-link" href="https://wa.me/50947321971" target="_blank" rel="noopener">
+          <svg class="btn-icon" aria-hidden="true"><use href="#wa-icon"/></svg><span data-i18n="cta_order">Commander sur WhatsApp</span>
+        </a>
+        <a class="link-quiet" href="#collection" data-i18n="hero_secondary">Voir la collection</a>
+      </div>
+      <p class="hero-phone">WhatsApp : <a class="wa-link" href="https://wa.me/50947321971" target="_blank" rel="noopener">+509 4732 1971</a></p>
+    </div>
+  </section>
+
+  <!-- PROOF STRIP -->
+  <section class="proof" aria-label="Points clés">
+    <ul class="container proof-list">
+      <li><span class="proof-k" data-i18n="proof1_k">Gravure laser</span><span class="proof-v" data-i18n="proof1_v">Prénom, date ou phrase courte</span></li>
+      <li><span class="proof-k" data-i18n="proof2_k">Prêt à offrir</span><span class="proof-v" data-i18n="proof2_v">Écrin et sac cadeau MARVENSHA</span></li>
+      <li><span class="proof-k" data-i18n="proof3_k">Okap &amp; Limbé</span><span class="proof-v" data-i18n="proof3_v">Deux boutiques, commande sur WhatsApp</span></li>
+    </ul>
+  </section>
+
+  <!-- SIGNATURE PIECES — showcase cards rendered by script.js from SHOWCASE (also the visible fallback
+       if the WhatsApp catalog widget below cannot load). -->
+  <section class="section collection" id="collection" aria-labelledby="collection-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-dark" data-i18n="col_eyebrow">Pièces signature</p>
+        <h2 id="collection-title" data-i18n="col_title">Choisissez, nous gravons</h2>
+        <p class="section-sub" data-i18n="col_sub">Chaque pièce se personnalise. Touchez une photo pour voir le détail, puis écrivez-nous sur WhatsApp.</p>
+      </div>
+      <!-- FEATURED 3D LOOP — Higgsfield medallion turntable (PROVISIONAL). Rendered by script.js when SHOW_MEDALLION_LOOP = true
+           (1:1 on tablet/desktop, 9:16 on phones). Remove nothing here to switch it off: just set the flag to false. -->
+      <div class="feature" id="medallion-feature" hidden></div>
+      <ul class="showcase-grid" id="showcase-grid"></ul>
+    </div>
+  </section>
+
+  <!-- PRODUCT VIDEOS — rendered by script.js from PRODUCT_VIDEOS. Play/tap => WhatsApp bar with +509 4732 1971. -->
+  <section class="section videos" id="videos" aria-labelledby="videos-title">
+    <div class="container">
+      <div class="section-head section-head-light">
+        <p class="eyebrow" data-i18n="videos_eyebrow">En vidéo</p>
+        <h2 id="videos-title" data-i18n="videos_title">De près</h2>
+        <p class="section-sub" data-i18n="videos_sub">Touchez une vidéo pour la lancer, puis commandez directement sur WhatsApp.</p>
+      </div>
+      <ul class="video-grid" id="video-grid"></ul>
+      <noscript><p class="section-sub">WhatsApp : <a href="https://wa.me/50947321971">+509 4732 1971</a></p></noscript>
+    </div>
+  </section>
+
+  <!-- PRODUCTS — CoS WhatsApp catalog widget (SETUP.md step 7). products.json = copy of whatsapp-sync/products.sample.json
+       (SAMPLE DATA, not real products/prices) until the sync job overwrites it. data-lang is a widget-supported
+       attribute that script.js keeps in sync with the language toggle (Kreyòl falls back to French in the widget). -->
+  <section id="products" data-source="products.json" data-lang="fr"></section>
+  <script>window.MARVENSHA_PRODUCTS_CONFIG = { whatsappNumber: "50947321971", brandName: "MARVENSHA" };</script>
+  <script src="whatsapp-sync/widget/marvensha-products.js" defer></script>
+
+  <!-- HOW LASER ENGRAVING WORKS -->
+  <section class="section engraving" id="engraving" aria-labelledby="engraving-title">
+    <div class="container">
+      <div class="section-head section-head-light">
+        <p class="eyebrow" data-i18n="eng_eyebrow">La gravure laser</p>
+        <h2 id="engraving-title" data-i18n="eng_title">Trois étapes simples</h2>
+      </div>
+      <ol class="steps">
+        <li class="step"><span class="step-num" aria-hidden="true">01</span><h3 data-i18n="s1_t">Choisissez votre bijou</h3><p data-i18n="s1_p">Collier barre, pendentif ou bracelet ID : choisissez le modèle qui vous plaît.</p></li>
+        <li class="step"><span class="step-num" aria-hidden="true">02</span><h3 data-i18n="s2_t">Envoyez vos mots</h3><p data-i18n="s2_p">Écrivez-nous sur WhatsApp le prénom, la date ou la phrase à graver.</p></li>
+        <li class="step"><span class="step-num" aria-hidden="true">03</span><h3 data-i18n="s3_t">Gravure &amp; écrin</h3><p data-i18n="s3_p">Nous gravons votre bijou au laser et le préparons dans un écrin, prêt à offrir.</p></li>
+      </ol>
+      <p class="eng-note"><span class="ph-tag" data-i18n="ph">À compléter</span> <span data-i18n="eng_note">Nombre de caractères, polices et délai : à confirmer par la boutique.</span></p>
+      <div class="engrave-row">
+        <div class="engrave-plate"><span class="plate-text">Live, Love, Wear Jewelry</span></div>
+        <!-- Motion tile: MARV_product_engraving_1x1 (Higgsfield) — mounted by script.js (SHOW_MOTION_TILES) -->
+        <div class="motion-slot" data-loop="engraving"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFT PACKAGING — stills 7688886072192847124_01 (bag) and 7677213192254131476_02 (in-store bags) -->
+  <section class="section gifting" id="gifting" aria-labelledby="gifting-title">
+    <div class="container gifting-grid">
+      <div class="gift-media">
+        <picture>
+          <source srcset="media/gift_bag.webp" type="image/webp">
+          <img class="gift-main" src="media/gift_bag.jpg" alt="" data-i18n-alt="gift_alt" width="576" height="1024" loading="lazy" decoding="async">
+        </picture>
+        <!-- Inset: Higgsfield unboxing loop (MARV_product_unboxing_1x1) when SHOW_MOTION_TILES = true; otherwise this founder still shows. -->
+        <div class="gift-inset motion-slot" data-loop="unboxing">
+          <picture>
+            <source srcset="media/gift_store.webp" type="image/webp">
+            <img src="media/gift_store.jpg" alt="" data-i18n-alt="gift2_alt" width="576" height="856" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </div>
+      <div class="gifting-copy">
+        <p class="eyebrow eyebrow-dark" data-i18n="gift_eyebrow">L'emballage</p>
+        <h2 id="gifting-title" data-i18n="gift_title">Prêt à offrir, <em>dès l'ouverture.</em></h2>
+        <p data-i18n="gift_p">Chaque bijou part dans un écrin MARVENSHA, glissé dans un sac blanc à anses en corde bleu marine, avec ruban.</p>
+        <ul class="pack-list">
+          <li><span class="swatch swatch-navy" aria-hidden="true"></span><span data-i18n="pack1">Écrin bleu marine, logo doré</span></li>
+          <li><span class="swatch swatch-white" aria-hidden="true"></span><span data-i18n="pack2">Sac blanc, anses en corde marine</span></li>
+          <li><span class="swatch swatch-emerald" aria-hidden="true"></span><span data-i18n="pack3">Présenté sur velours émeraude</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS — from TikTok captions/stickers/banner (see tiktok/INDEX.md). Hours not published: not invented. -->
+  <section class="section locations" id="locations" aria-labelledby="locations-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-dark" data-i18n="loc_eyebrow">Où nous trouver</p>
+        <h2 id="locations-title" data-i18n="loc_title">Deux adresses</h2>
+      </div>
+      <ul class="loc-grid">
+        <li class="loc-card"><span class="loc-pin" aria-hidden="true">◆</span><div><h3>Okap <span class="loc-alt">(Cap-Haïtien)</span></h3><p data-i18n="loc_okap">Route nationale #1, carrefour Champin</p></div></li>
+        <li class="loc-card"><span class="loc-pin" aria-hidden="true">◆</span><div><h3>Limbé</h3><p data-i18n="loc_limbe">Foureau, Ave Pétion</p></div></li>
+      </ul>
+      <p class="loc-note"><span class="ph-tag" data-i18n="ph">À compléter</span> <span data-i18n="loc_note">Horaires à confirmer. Écrivez-nous sur WhatsApp avant de passer.</span></p>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section class="section social" id="social" aria-labelledby="social-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-dark" data-i18n="social_eyebrow">Suivez-nous</p>
+        <h2 id="social-title" data-i18n="social_title">Les nouveautés en premier</h2>
+      </div>
+      <div class="social-grid">
+        <a class="social-card tiktok-link" href="https://www.tiktok.com/@julensjul" target="_blank" rel="noopener">
+          <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg>
+          <span class="social-name">TikTok</span><span class="social-handle">@julensjul</span>
+        </a>
+        <!-- INSTAGRAM SLOT — PLACEHOLDER. Set INSTAGRAM_URL in script.js once confirmed (a sticker shows @MarvenshaJewelrystore; unverified). -->
+        <a class="social-card instagram-link is-placeholder" href="#social" aria-disabled="true">
+          <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+          <span class="social-name">Instagram</span><span class="ph-tag" data-i18n="ph_link">Lien à venir</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL WHATSAPP CTA -->
+  <section class="section cta" id="order" aria-labelledby="cta-title">
+    <div class="container cta-inner">
+      <!-- Official M-bag mark (cropped from the founder's logo; wordmark text excluded) -->
+      <img class="cta-mark" src="media/brand/marvensha_mark_gold.svg" width="56" height="73" alt="">
+      <h2 id="cta-title" data-i18n="cta_title">Prêt à le rendre unique ?</h2>
+      <p data-i18n="cta_p">Dites-nous le bijou et les mots à graver. Nous vous répondons sur WhatsApp pour confirmer les détails et le prix.</p>
+      <a class="btn btn-gold btn-lg wa-link" id="final-cta" href="https://wa.me/50947321971" target="_blank" rel="noopener">
+        <svg class="btn-icon" aria-hidden="true"><use href="#wa-icon"/></svg><span data-i18n="cta_order">Commander sur WhatsApp</span>
+      </a>
+      <p class="wa-number">+509 4732 1971</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a class="brand" href="#top"><img class="brand-mark" src="media/brand/marvensha_mark_gold.svg" width="26" height="34" alt=""><span class="brand-word" data-brand>MARVENSHA</span></a>
+      <p class="footer-tag" data-i18n="footer_tag">Bijoux plaqué or personnalisés, gravés au laser</p>
+      <p class="footer-places">Okap · Limbé</p>
+    </div>
+    <ul class="footer-links">
+      <li><a class="wa-link" href="https://wa.me/50947321971" target="_blank" rel="noopener">WhatsApp +509 4732 1971</a></li>
+      <li><a class="tiktok-link" href="https://www.tiktok.com/@julensjul" target="_blank" rel="noopener">TikTok @julensjul</a></li>
+      <li><span class="muted">Instagram</span> <span class="ph-tag" data-i18n="ph_link">Lien à venir</span></li>
+    </ul>
+  </div>
+  <div class="container footer-bottom">
+    <p>© <span id="year">2026</span> <span data-brand>MARVENSHA</span>. <span data-i18n="rights">Tous droits réservés.</span></p>
+    <p class="muted" data-i18n="logo_note">Logo : symbole officiel de la boutique ; nom composé MARVENSHA.</p>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp button (site-wide). Hidden while the hero CTA or the final CTA is on screen. -->
+<a class="wa-float wa-link" id="wa-float" href="https://wa.me/50947321971" target="_blank" rel="noopener" data-i18n-aria="wa_float_aria" aria-label="Commander sur WhatsApp, +509 4732 1971">
+  <svg aria-hidden="true"><use href="#wa-icon"/></svg><span class="wa-float-text">WhatsApp</span>
+</a>
+
+</body>
+</html>
